@@ -1,0 +1,30 @@
+{
+  "name": "Gitsnackhub",
+  "version": "1.0.0",
+  "description": "Play snake game on GitHub contribution graphs.",
+  "content_scripts": [
+    {
+      "css": [],
+      "js": [
+        "gitsnackhub.js"
+      ],
+      "matches": [
+        "https://github.com/*"
+      ]
+    }
+  ],
+  "permissions": [
+    "storage",
+    "contextMenus",
+    "activeTab"
+  ],
+  "optional_permissions": [
+    "http://*/*",
+    "https://*/*"
+  ],
+  "icons": {
+    "48": "icon-48.png",
+    "128": "icon-128.png"
+  },
+  "manifest_version": 2
+}
