@@ -75,8 +75,8 @@ class GithubGraphCanvas : GraphCanvas {
         var cellLevel = CellType.BODY_4
         for (pos in snake.iterator()) {
             if ((pos.first in 0 until width) && (pos.second in 0 until height)) {
-                tempGraphMap[food.first][food.second] = cellLevel
-                cellLevel = cellLevel.next
+                tempGraphMap[pos.first][pos.second] = cellLevel
+                cellLevel = cellLevel.getNext()
             }
         }
 

@@ -8,10 +8,10 @@ class SnakeBody(
 }
 
 enum class DIRECTION(val x: Int, val y: Int) {
-    TOP(-1, 0),
-    RIGHT(0, 1),
-    BOTTOM(1, 0),
-    LEFT(0, -1);
+    TOP(0, -1),
+    RIGHT(1, 0),
+    BOTTOM(0, 1),
+    LEFT(-1, 0);
 }
 
 
@@ -37,6 +37,10 @@ class Snake(headX: Int, headY: Int) : Iterable<Pair<Int, Int>> {
         } else {
             size += 1
         }
+    }
+
+    fun getHead(): Pair<Int, Int> {
+        return Pair(head.x, head.y)
     }
 
     fun getNext(direction: DIRECTION): Pair<Int, Int> {
