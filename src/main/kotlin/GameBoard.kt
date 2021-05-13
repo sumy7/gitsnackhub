@@ -44,7 +44,7 @@ class GameBoard {
         inited = true
     }
 
-    fun update() {
+    fun handleKeyEvent() {
         if (this.inited) {
             if (this.isGameOver) {
                 if (keyBoard!!.isPressed(KeyBoard.SPACE)) {
@@ -80,8 +80,13 @@ class GameBoard {
                 this.isStart = true
             }
             this.direction = nextDirection
+        }
+    }
 
-            // 未开始游戏时，只响应按键，不处理移动
+    fun update() {
+        if (this.inited) {
+
+            // 未开始游戏时，不处理移动
             if (!this.isStart) {
                 return
             }
