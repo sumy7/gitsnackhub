@@ -90,12 +90,13 @@ class GithubGraphCanvas : GraphCanvas {
                         dataLevel.nodeValue = tempGraphMap[i][j].value.toString()
                         node.attributes.setNamedItem(dataLevel)
                     }
-                    graphMap[i][j] = tempGraphMap[i][j]
-                    if (graphMap[i][j] == CellType.EMPTY) {
+                    if (graphMap[i][j] != CellType.EMPTY && tempGraphMap[i][j] == CellType.EMPTY) {
                         emptyCount += 1
-                    } else {
+                    }
+                    if (graphMap[i][j] == CellType.EMPTY && tempGraphMap[i][j] != CellType.EMPTY) {
                         emptyCount -= 1
                     }
+                    graphMap[i][j] = tempGraphMap[i][j]
                 }
             }
         }
