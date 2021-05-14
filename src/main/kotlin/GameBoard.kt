@@ -56,25 +56,25 @@ class GameBoard {
             // 判断按键
             var nextDirection = this.direction
             if (keyBoard!!.isPressed(KeyBoard.UP)) {
-                if (this.direction !== DIRECTION.BOTTOM || !this.isStart) {
+                if (this.snake!!.getDirection() !== DIRECTION.BOTTOM || !this.isStart) {
                     nextDirection = DIRECTION.TOP
                 }
                 this.isStart = true
             }
             if (keyBoard!!.isPressed(KeyBoard.DOWN)) {
-                if (this.direction !== DIRECTION.TOP || !this.isStart) {
+                if (this.snake!!.getDirection() !== DIRECTION.TOP || !this.isStart) {
                     nextDirection = DIRECTION.BOTTOM
                 }
                 this.isStart = true
             }
             if (keyBoard!!.isPressed(KeyBoard.LEFT)) {
-                if (this.direction !== DIRECTION.RIGHT || !this.isStart) {
+                if (this.snake!!.getDirection() !== DIRECTION.RIGHT || !this.isStart) {
                     nextDirection = DIRECTION.LEFT
                 }
                 this.isStart = true
             }
             if (keyBoard!!.isPressed(KeyBoard.RIGHT)) {
-                if (this.direction !== DIRECTION.LEFT || !this.isStart) {
+                if (this.snake!!.getDirection() !== DIRECTION.LEFT || !this.isStart) {
                     nextDirection = DIRECTION.RIGHT
                 }
                 this.isStart = true

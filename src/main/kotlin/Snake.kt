@@ -21,6 +21,7 @@ class Snake(headX: Int, headY: Int) : Iterable<Pair<Int, Int>> {
     private var tail = head
 
     private var size = 1
+    private var dire: DIRECTION = DIRECTION.LEFT
 
     fun stepTo(direction: DIRECTION, eat: Boolean) {
         val nextX = head.x + direction.x
@@ -30,6 +31,8 @@ class Snake(headX: Int, headY: Int) : Iterable<Pair<Int, Int>> {
         head.prev = snakeBody
         snakeBody.next = head
         head = snakeBody
+
+        this.dire = direction
 
         if (!eat) {
             tail.prev!!.next = null
@@ -41,6 +44,10 @@ class Snake(headX: Int, headY: Int) : Iterable<Pair<Int, Int>> {
 
     fun getHead(): Pair<Int, Int> {
         return Pair(head.x, head.y)
+    }
+
+    fun getDirection(): DIRECTION {
+        return this.dire
     }
 
     fun getNext(direction: DIRECTION): Pair<Int, Int> {
