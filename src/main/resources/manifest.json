@@ -13,11 +13,7 @@
       ]
     }
   ],
-  "permissions": [
-    "storage",
-    "contextMenus",
-    "activeTab"
-  ],
+  "permissions": [],
   "optional_permissions": [
     "http://*/*",
     "https://*/*"
