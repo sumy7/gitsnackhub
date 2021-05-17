@@ -29,11 +29,7 @@ class GithubGraphCanvas : GraphCanvas {
         var index = 0
         while (index < this.calendarDays.length) {
             val node = this.calendarDays[index] as SVGRectElement?
-            if (node != null) {
-                val dataLevel = document.createAttribute("data-level")
-                dataLevel.nodeValue = CellType.EMPTY.value.toString()
-                node.attributes.setNamedItem(dataLevel)
-            }
+            node?.setAttribute("data-level", CellType.EMPTY.value.toString())
             index += 1
         }
     }
@@ -85,11 +81,8 @@ class GithubGraphCanvas : GraphCanvas {
                 if (graphMap[i][j] != tempGraphMap[i][j]) {
                     val index = height * i + j
                     val node = this.calendarDays[index] as SVGRectElement?
-                    if (node != null) {
-                        val dataLevel = document.createAttribute("data-level")
-                        dataLevel.nodeValue = tempGraphMap[i][j].value.toString()
-                        node.attributes.setNamedItem(dataLevel)
-                    }
+                    node?.setAttribute("data-level", tempGraphMap[i][j].value.toString())
+
                     if (graphMap[i][j] != CellType.EMPTY && tempGraphMap[i][j] == CellType.EMPTY) {
                         emptyCount += 1
                     }
