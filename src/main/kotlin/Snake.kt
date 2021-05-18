@@ -15,7 +15,12 @@ enum class DIRECTION(val x: Int, val y: Int) {
 }
 
 
-class Snake(headX: Int, headY: Int) : Iterable<Pair<Int, Int>> {
+class Snake(
+    headX: Int,                   // 初始位置X坐标
+    headY: Int,                   // 初始位置Y坐标
+    private val boundWidth: Int,  // 活动范围宽度
+    private val boundHeight: Int  // 活动范围高度
+) : Iterable<Pair<Int, Int>> {
 
     private var head = SnakeBody(headX, headY)
     private var tail = head
@@ -24,8 +29,8 @@ class Snake(headX: Int, headY: Int) : Iterable<Pair<Int, Int>> {
     private var dire: DIRECTION = DIRECTION.LEFT
 
     fun stepTo(direction: DIRECTION, eat: Boolean) {
-        val nextX = head.x + direction.x
-        val nextY = head.y + direction.y
+        val nextX = (head.x + direction.x + boundWidth) % boundWidth
+        val nextY = (head.y + direction.y + boundHeight) % boundHeight
 
         val snakeBody = SnakeBody(nextX, nextY)
         head.prev = snakeBody
@@ -51,8 +56,8 @@ class Snake(headX: Int, headY: Int) : Iterable<Pair<Int, Int>> {
     }
 
     fun getNext(direction: DIRECTION): Pair<Int, Int> {
-        val nextX = head.x + direction.x
-        val nextY = head.y + direction.y
+        val nextX = (head.x + direction.x + boundWidth) % boundWidth
+        val nextY = (head.y + direction.y + boundHeight) % boundHeight
         return Pair(nextX, nextY)
     }
 

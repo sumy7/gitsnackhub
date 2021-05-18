@@ -15,7 +15,12 @@ class GameBoard {
             return
         }
         val tempGraphCanvas = GithubGraphCanvas()
-        val tempSnake = Snake(tempGraphCanvas.getWidth() / 2, tempGraphCanvas.getHeight() / 2)
+        val tempSnake = Snake(
+            tempGraphCanvas.getWidth() / 2,
+            tempGraphCanvas.getHeight() / 2,
+            tempGraphCanvas.getWidth(),
+            tempGraphCanvas.getHeight()
+        )
 
         graphCanvas = tempGraphCanvas
         snake = tempSnake
@@ -33,7 +38,12 @@ class GameBoard {
         }
 
         val tempGraphCanvas = GithubGraphCanvas()
-        val tempSnake = Snake(tempGraphCanvas.getWidth() / 2, tempGraphCanvas.getHeight() / 2)
+        val tempSnake = Snake(
+            tempGraphCanvas.getWidth() / 2,
+            tempGraphCanvas.getHeight() / 2,
+            tempGraphCanvas.getWidth(),
+            tempGraphCanvas.getHeight()
+        )
 
         graphCanvas = tempGraphCanvas
         snake = tempSnake

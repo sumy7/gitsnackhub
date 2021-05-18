@@ -58,6 +58,13 @@ class GithubGraphCanvas : GraphCanvas {
         return Pair(0, 0)
     }
 
+    override fun checkEmpty(x: Int, y: Int): Boolean {
+        if ((x !in 0 until width) && (y !in 0 until height)) {
+            return false
+        }
+        return graphMap[x][y] == CellType.EMPTY
+    }
+
     override fun render(snake: Snake, food: Pair<Int, Int>) {
         val tempGraphMap = Array<Array<CellType>>(width) {
             Array<CellType>(height) {
