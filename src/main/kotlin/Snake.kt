@@ -28,6 +28,12 @@ class Snake(
     private var size = 1
     private var dire: DIRECTION = DIRECTION.LEFT
 
+    /**
+     * 获取贪吃蛇目前的长度
+     * @return 贪吃蛇的长度
+     */
+    fun getSize() = this.size
+
     fun stepTo(direction: DIRECTION, eat: Boolean) {
         val nextX = (head.x + direction.x + boundWidth) % boundWidth
         val nextY = (head.y + direction.y + boundHeight) % boundHeight

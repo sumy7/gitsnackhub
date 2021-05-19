@@ -1,4 +1,5 @@
 import kotlinx.browser.document
+import org.w3c.dom.HTMLElement
 import org.w3c.dom.NodeList
 import org.w3c.dom.get
 import org.w3c.dom.svg.SVGRectElement
@@ -9,11 +10,15 @@ class GithubGraphCanvas : GraphCanvas {
     private val width: Int
 
     private val calendarDays: NodeList
+    private val scoreDom: HTMLElement?
+    private var scoreTemplate: String = "%s"
     private val graphMap: Array<Array<CellType>>
     private var emptyCount = 0
 
-    constructor() {
+    init {
         this.calendarDays = document.querySelectorAll(".js-calendar-graph .js-calendar-graph-svg rect")
+        this.scoreDom = document.querySelector(".js-yearly-contributions h2") as HTMLElement?
+        this.scoreTemplate = getScoreTemplate(scoreDom?.innerText)
         this.height = 7
         this.width = this.calendarDays.length / 7
         this.graphMap = Array<Array<CellType>>(width) {
@@ -101,5 +106,7 @@ class GithubGraphCanvas : GraphCanvas {
             }
         }
 
+        // 渲染得分（贪吃蛇长度）
+        this.scoreDom?.innerHTML = this.scoreTemplate.replace("%s", snake.getSize().toString())
     }
 }
