@@ -25,6 +25,7 @@ class GameBoard {
         graphCanvas = tempGraphCanvas
         snake = tempSnake
         keyBoard = KeyBoard()
+        initKeyEvent(keyBoard!!)
         food = graphCanvas!!.randomEmpty()
 
         isGameOver = false
@@ -54,42 +55,50 @@ class GameBoard {
         inited = true
     }
 
-    fun handleKeyEvent() {
-        if (this.inited) {
-            if (this.isGameOver) {
-                if (keyBoard!!.isPressed(KeyBoard.SPACE)) {
+    /**
+     * 初始化键盘事件
+     */
+    private fun initKeyEvent(keyBoard: KeyBoard) {
+        keyBoard.on(KeyBoardKey.SPACE) {
+            if (inited) {
+                if (isGameOver) { // 游戏失败时重启游戏
                     restart()
+                } else { // 否则切换暂停状态
+                    isStart = !isStart
                 }
-                return
             }
-
-            // 判断按键
-            var nextDirection = this.direction
-            if (keyBoard!!.isPressed(KeyBoard.UP)) {
-                if (this.snake!!.getDirection() !== DIRECTION.BOTTOM || !this.isStart) {
-                    nextDirection = DIRECTION.TOP
+        }
+        keyBoard.on(KeyBoardKey.UP) {
+            if (inited && !isGameOver) {
+                if (snake!!.getDirection() !== DIRECTION.BOTTOM || !isStart) {
+                    direction = DIRECTION.TOP
                 }
-                this.isStart = true
+                isStart = true
             }
-            if (keyBoard!!.isPressed(KeyBoard.DOWN)) {
-                if (this.snake!!.getDirection() !== DIRECTION.TOP || !this.isStart) {
-                    nextDirection = DIRECTION.BOTTOM
+        }
+        keyBoard.on(KeyBoardKey.DOWN) {
+            if (inited && !isGameOver) {
+                if (snake!!.getDirection() !== DIRECTION.TOP || !isStart) {
+                    direction = DIRECTION.BOTTOM
                 }
-                this.isStart = true
+                isStart = true
             }
-            if (keyBoard!!.isPressed(KeyBoard.LEFT)) {
-                if (this.snake!!.getDirection() !== DIRECTION.RIGHT || !this.isStart) {
-                    nextDirection = DIRECTION.LEFT
+        }
+        keyBoard.on(KeyBoardKey.LEFT) {
+            if (inited && !isGameOver) {
+                if (snake!!.getDirection() !== DIRECTION.RIGHT || !isStart) {
+                    direction = DIRECTION.LEFT
                 }
-                this.isStart = true
+                isStart = true
             }
-            if (keyBoard!!.isPressed(KeyBoard.RIGHT)) {
-                if (this.snake!!.getDirection() !== DIRECTION.LEFT || !this.isStart) {
-                    nextDirection = DIRECTION.RIGHT
+        }
+        keyBoard.on(KeyBoardKey.RIGHT) {
+            if (inited && !isGameOver) {
+                if (snake!!.getDirection() !== DIRECTION.LEFT || !isStart) {
+                    direction = DIRECTION.RIGHT
                 }
-                this.isStart = true
+                isStart = true
             }
-            this.direction = nextDirection
         }
     }
 

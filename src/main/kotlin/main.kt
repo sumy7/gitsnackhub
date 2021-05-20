@@ -9,15 +9,13 @@ fun main() {
         sg?.addEventListener("click", { e: Event ->
             val gameBoard = GameBoard()
             window.setInterval({
-                gameBoard.handleKeyEvent()
-            }, 20)
-            window.setInterval({
                 gameBoard.update()
                 gameBoard.draw()
             }, 200)
 
             window.alert(
-                """YOU GOT IT!
+                """
+                YOU GOT IT!
                 arrow ↑↓←→ to move.
                 space to reset game while game over.
                 """.trimIndent()
