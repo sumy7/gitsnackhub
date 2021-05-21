@@ -7,13 +7,23 @@ game on it.
 
 ## Installation
 
-currently unavailable.
++ [Github Releases](https://github.com/sumy7/gitsnackhub/releases)
++ [Google Chrome Store](https://chrome.google.com/webstore/detail/gitsnackhub/emngeeijijgenmejojhkdigiblicfdbe)
 
 ## How to play
 
 ![game.png](./screenshots/game.png)
 
-1. Double click summary __more__ to open game mode.
+### Introduce
+
++ ① Score
++ ② Game board
++ ③ Switch cheats mode
++ ④ Active game mode
+
+### Get Started
+
+1. Double click ④ to active game mode.
 2. Use arrow ↑↓←→ to move.
 3. Use SPACE to reset game while game over.
 4. Have fun.
